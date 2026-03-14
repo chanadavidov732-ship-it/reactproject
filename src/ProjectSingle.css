@@ -1,0 +1,63 @@
+/* ProjectSingle.css */
+
+/* 1. מכריח את הטבלה להתכנס לתוך רוחב הכרטיס בלי לחרוג */
+.surface-card .p-datatable {
+    width: 100% !important;
+    table-layout: fixed !important; /* קריטי: מחלק את הרוחב שווה בשווה ומונע גלילה */
+}
+
+/* 2. צמצום מרווחים ופונטים בתוך התאים */
+.surface-card .p-datatable .p-datatable-thead > tr > th,
+.surface-card .p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.5rem 0.2rem !important; 
+    font-size: 0.85rem; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+
+/* 3. טיפול ספציפי בעמודת העריכה שתהיה צרה ככל האפשר */
+.surface-card .p-datatable .p-datatable-tbody > tr > td:last-child {
+    width: 3rem !important;
+}
+
+/* 4. התאמה למסכים קטנים מאוד */
+@media screen and (max-width: 768px) {
+    .surface-card .p-datatable .p-datatable-thead > tr > th,
+    .surface-card .p-datatable .p-datatable-tbody > tr > td {
+        font-size: 0.7rem !important; 
+        padding: 0.2rem 0.1rem !important;
+    }
+    
+    /* הסרת ה-Padding של הכרטיס עצמו כדי להרוויח עוד מקום */
+    .surface-card {
+        padding: 1rem !important;
+    }
+}
+
+
+
+
+
+
+
+
+/* 
+
+        <div className="grid grid-nogutter w-full" style={{ minHeight: '100vh' }}>
+            <div className="col-12 md:col-4 p-2">
+                <div className="surface-card p-4 border-round shadow-2 h-full border-blue-500 border-top-3">
+                    <h3 className="text-center text-900 mb-4">To Do</h3>
+                    <div className="card p-fluid" >
+                            <DataTable value={projects} editMode="row" dataKey="id" onRowEditComplete={onRowEditComplete} responsiveLayout="scroll">
+                                <Column field="Ttitle" header="Title" editor={(options) => textEditor(options)} ></Column>
+                                <Column field="Tdescription" header="Description" editor={(options) => textEditor(options)} ></Column>
+                                <Column field="Tpriority" header="Priority" body={statusBodyTemplate} editor={(options) => statusEditor(options)} ></Column>
+                                <Column field="TcreatedAt" header="Date" body={dateBodyTemplate} editor={(options) => dateEditor(options)} sortable></Column>
+  
+                                <Column rowEditor={allowEdit} headerStyle={{ width: '10%', minWidth: '4rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                            </DataTable>
+                            <Button label="Add Task" icon="pi pi-plus" className="p-button-text mt-3 w-full" />
+                        </div>
+                        </div></div> 
+                        */
