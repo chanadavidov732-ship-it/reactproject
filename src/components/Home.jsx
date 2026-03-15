@@ -13,9 +13,7 @@ const Home = () => {
   const navigate = useNavigate()
   const isLogged = useSelector(state => state.LoginSlice.isLogged)
   const { register, handleSubmit, formState: { errors } } = useForm()
-  
   const [value, setValue] = useState('');
-
 
   useEffect(() => {
     if (isLogged) {
@@ -28,32 +26,31 @@ const Home = () => {
   }
 
   return (
+    <div>
+      <h1> Welcome to your projects</h1>
+      <h3>To view all projects please log in</h3>
 
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        
-        <input
-          placeholder="name"
-          {...register("userName", { required: "חובה להזין שם" })}
-        />
-        {errors.userName && <span style={{ color: 'red' }}>{errors.userName.message}</span>}
-      </div>
-      
-      <div>
-        <input
-          placeholder="mail"
-          {...register("userMail", {
-            required: "חובה להזין מייל",
-            pattern: {
-            value: /^\S+@\S+\.\S+$/,
-              message: "מייל לא תקין"
-            }
-          })}
-        />
-        {errors.userMail && <span style={{ color: 'red' }}>{errors.userMail.message}</span>}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <input
+            placeholder="name"
+            {...register("userName", { required: "חובה להזין שם" })}
+          />
+          {errors.userName && <span style={{ color: 'red' }}>{errors.userName.message}</span>}
         </div>
-      <button type="submit">login</button>
-    </form>
+        <div>
+          <input
+            placeholder="mail"
+            {...register("userMail", {
+              required: "חובה להזין מייל",
+              pattern: { value: /^\S+@\S+\.\S+$/, message: "מייל לא תקין" }
+            })}
+          />
+          {errors.userMail && <span style={{ color: 'red' }}>{errors.userMail.message}</span>}
+        </div>
+        <button type="submit">login</button>
+      </form>
+    </div>
   )
 }
 
