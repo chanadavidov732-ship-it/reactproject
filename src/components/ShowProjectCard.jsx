@@ -1,0 +1,38 @@
+import React, { useEffect, useState } from 'react'
+import { InputText } from 'primereact/inputtext'
+import { DataTable } from 'primereact/datatable'
+import { Column } from 'primereact/column'
+import { InputNumber } from 'primereact/inputnumber'
+import { Card } from 'primereact/card'
+import { Button } from 'primereact/button'
+import StatusEditor from './StatusEditor'
+import ChangeStatusBody from './ChangeStatusBody'
+import DateEditor from './DateEditor'
+import TextEditor from './TextEditor'
+import DeleteBody from './DeleteBody'
+
+
+const ShowProjectCard = ({ whatTasksToShow,typeCurrentStatus, onRowEditComplete, statusBodyTemplate,   dateBodyTemplate,  idOfProjectSignle, allowEdit, addNewTask,deleted ,statuses}) => {
+
+    return (
+        <div className="col-12 md:col-4 p-1">
+            <div className="surface-card p-0 border-round shadow-2 h-full border-blue-500 border-top-3">
+                <h3 className="text-center text-900 mb-4">To Do</h3>
+                <div className="card p-fluid" >
+                    <DataTable value={whatTasksToShow} editMode="row" dataKey="Tid" onRowEditComplete={onRowEditComplete} >
+
+                        <Column field="Ttitle" header="Title" editor={(options) => (<TextEditor options={options} />)} style={{ width: '20%' }}></Column>
+                        <Column field="Tdescription" header="Description" editor={(options) =>(<TextEditor options={options} />)} style={{ width: '20%' }}></Column>
+                        <Column field="Tpriority" header="Priority" body={statusBodyTemplate} editor={(options) => (<StatusEditor options={options} statuses={statuses}/>)} style={{ width: '20%' }}></Column>
+                        <Column field="TdueDate" header="Date" body={dateBodyTemplate} editor={(options) => (<DateEditor options={options} />)} style={{ width: '20%' }} sortable></Column>
+                        <Column body={(rowData) => (<ChangeStatusBody rowData={rowData}  idOfProjectSignle={idOfProjectSignle} />)} headerStyle={{ width: '2%', minWidth: '4rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column rowEditor={allowEdit} headerStyle={{ width: '10%', minWidth: '4rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                        <Column body={(rowData) => (<DeleteBody rowData={rowData} deleted={deleted} />)} headerStyle={{ width: '2%', minWidth: '4rem' }} bodyStyle={{ textAlign: 'center' }}></Column>
+
+                    </DataTable>
+                    <Button onClick={() => addNewTask(typeCurrentStatus)} label="Add Task" icon="pi pi-plus" className="p-button-text mt-3 w-full" />
+                </div>
+            </div></div>
+    )
+}
+export default ShowProjectCard

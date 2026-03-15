@@ -1,19 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
+import { Card } from 'primereact/card'
+import { Button } from 'primereact/button'
 import { useNavigate } from 'react-router-dom'
 import { deleteP, update } from '../store/ProjectsSlice'
 
-import React, { useState, useEffect } from 'react';
-import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
-import { Rating } from 'primereact/rating';
-import { Tag } from 'primereact/tag';
-import { classNames } from 'primereact/utils';
+import React, { useState, useEffect } from 'react'
+import { DataView, DataViewLayoutOptions } from 'primereact/dataview'
+import { Rating } from 'primereact/rating'
+import { Tag } from 'primereact/tag'
+import { classNames } from 'primereact/utils'
 
-
-import { Dialog } from 'primereact/dialog';
-import { useForm } from 'react-hook-form';
-import ProjectSingle from './ProjectSingle';
+import { Dialog } from 'primereact/dialog'
+import { useForm } from 'react-hook-form'
+import ProjectSingle from './ProjectSingle'
 
 const Projects = () => {
     const dispatch = useDispatch()
@@ -24,12 +23,15 @@ const Projects = () => {
     const deleteFunc = (id) => {
         dispatch(deleteP(id))
     }
+
     const updateFunc = () => {
     }
+
     const onSubmit = (data) => {
         setVisible(false)
         dispatch(update({ id: data.proId, name: data.proName, description: data.proDescription }))
     }
+    
     const addProjFunc = () => {
         navigate('/NewProject')
     }
@@ -82,15 +84,13 @@ const Projects = () => {
                         {project.description}
                     </p>
                 </Card>
-                
             </div>
         )
     }
     
     const itemTemplate = (project, layout, index) => {
         if (!project)
-            return;
-
+            return
 
         if (layout === 'list') return listItem(project, index);
         else if (layout === 'grid') return gridItem(project);
