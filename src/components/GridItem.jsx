@@ -9,8 +9,8 @@
                     subTitle={new Date(project.createdAt).toLocaleDateString()}
                     footer={(
                         <div className="flex gap-2">
-                            <Button label="Delete" icon="pi pi-trash" severity="danger" onClick={() => deleteFunc(project.id)} />
-                            <Button label="Update" icon="pi pi-pencil" severity="secondary" onClick={() => updateFunc(project.id)} />
+                            <Button style={{ backgroundColor: '#06b6d4', borderColor: '#06b6d4' }} label="Delete" icon="pi pi-trash" severity="danger" onClick={() => deleteFunc(project.id)} />
+                            <Button style={{ backgroundColor: '#06b6d4', borderColor: '#06b6d4' }} label="Update" icon="pi pi-pencil" severity="secondary" onClick={() => updateFunc(project.id)} />
                         </div>
                     )}
                     className="h-full shadow-2"

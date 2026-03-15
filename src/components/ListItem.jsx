@@ -1,5 +1,6 @@
 import { classNames } from 'primereact/utils';
 import { Button } from 'primereact/button';
+import { ColorPicker } from 'primereact/colorpicker';
 const ListItem = ({project, index,deleteFunc,updateFunc,goToProject}) => {
         return (
             <div className="col-12 p-3" key={project.id}>
@@ -12,8 +13,8 @@ const ListItem = ({project, index,deleteFunc,updateFunc,goToProject}) => {
                         </p>
                     </div>
                     <div className="flex flex-row md:flex-column gap-2">
-                        <Button label="Update" icon="pi pi-pencil" severity="secondary" className="p-button-sm" onClick={() => updateFunc(project.id)} />
-                        <Button label="Delete" icon="pi pi-trash" severity="danger" className="p-button-sm" onClick={() => deleteFunc(project.id)} />
+                        <Button style={{ backgroundColor: '#06b6d4', borderColor: '#06b6d4' }} label="Update" icon="pi pi-pencil" severity="secondary" className="p-button-sm" onClick={() => updateFunc(project.id)} />
+                        <Button style={{ backgroundColor: '#06b6d4', borderColor: '#06b6d4' }} label="Delete" icon="pi pi-trash" severity="danger" className="p-button-sm" onClick={() => deleteFunc(project.id)} />
                     </div>
                 </div>
             </div>

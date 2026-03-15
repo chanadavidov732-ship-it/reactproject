@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { useForm } from 'react-hook-form';
 import UpdateProject from './UpdateProject';
+import NewProject from './NewProject';
 
 
 const Projects = () => {
@@ -15,7 +16,10 @@ const Projects = () => {
     const navigate = useNavigate()
     const projects = useSelector(state => state.ProjectsSlice.list)
     const [visible, setVisible] = useState(false);
+    const [visible2, setVisible2] = useState(false);
+
     const [selectedProject, setSelectedProject] = useState(null);
+    const [ifAddProject, setIfAddProject] = useState(false)
     const [layout, setLayout] = useState('grid');
 
     const deleteFunc = (id) => {
@@ -26,9 +30,12 @@ const Projects = () => {
         setVisible(true);
 
     }
-    
+
     const addProjFunc = () => {
-        navigate('/NewProject')
+        setIfAddProject(true)
+        setVisible2(true);
+
+        //navigate('/NewProject')
     }
     const goToProject = (id) => {
         navigate('/ProjectSingle', { state: id })
@@ -37,8 +44,8 @@ const Projects = () => {
     const itemTemplate = (project, layout, index) => {
         if (!project)
             return;
-        if (layout === 'list') return <ListItem project={project} index={index}  addProjFunc={addProjFunc} deleteFunc={deleteFunc} updateFunc={updateFunc} goToProject={goToProject}/>
-        else if (layout === 'grid') return <GridtItem project={project} index={index}  addProjFunc={addProjFunc} deleteFunc={deleteFunc} updateFunc={updateFunc} goToProject={goToProject} />
+        if (layout === 'list') return <ListItem project={project} index={index} addProjFunc={addProjFunc} deleteFunc={deleteFunc} updateFunc={updateFunc} goToProject={goToProject} />
+        else if (layout === 'grid') return <GridtItem project={project} index={index} addProjFunc={addProjFunc} deleteFunc={deleteFunc} updateFunc={updateFunc} goToProject={goToProject} />
 
     }
     const listTemplate = (projects, layout) => {
@@ -47,16 +54,19 @@ const Projects = () => {
     const header = () => {
         return (
             <div className="flex justify-content-between align-items-center">
-                <Button label="Add Project"icon="pi pi-plus"severity="success"onClick={addProjFunc}/>
+                <Button style={{ backgroundColor: '#06b6d4', borderColor: '#06b6d4', }} label="Add Project" icon="pi pi-plus" severity="success" onClick={addProjFunc} />
                 <DataViewLayoutOptions layout={layout} onChange={(e) => setLayout(e.value)} />
             </div>
         )
     }
     return (
         <div className="card p-4">
-            <DataView value={projects}listTemplate={listTemplate}layout={layout}header={header()}rows={6}/>
+            <DataView value={projects} listTemplate={listTemplate} layout={layout} header={header()} rows={6} />
             {selectedProject && (
-                <UpdateProject id={selectedProject}visible={visible}setVisible={setVisible}/>
+                <UpdateProject id={selectedProject} visible={visible} setVisible={setVisible} />
+            )}
+            {ifAddProject && (
+                <NewProject visible2={visible2} setVisible2={setVisible2}/>
             )}
         </div>
     )
