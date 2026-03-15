@@ -9,6 +9,7 @@ import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
 import { useForm } from 'react-hook-form';
 import UpdateProject from './UpdateProject';
 
+
 const Projects = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -23,7 +24,9 @@ const Projects = () => {
     const updateFunc = (id) => {
         setSelectedProject(id);
         setVisible(true);
+
     }
+    
     const addProjFunc = () => {
         navigate('/NewProject')
     }
@@ -36,6 +39,7 @@ const Projects = () => {
             return;
         if (layout === 'list') return <ListItem project={project} index={index}  addProjFunc={addProjFunc} deleteFunc={deleteFunc} updateFunc={updateFunc} goToProject={goToProject}/>
         else if (layout === 'grid') return <GridtItem project={project} index={index}  addProjFunc={addProjFunc} deleteFunc={deleteFunc} updateFunc={updateFunc} goToProject={goToProject} />
+
     }
     const listTemplate = (projects, layout) => {
         return <div className="grid grid-nogutter">{projects.map((project, index) => itemTemplate(project, layout, index))}</div>
