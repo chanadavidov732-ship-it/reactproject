@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { InputNumber } from 'primereact/inputnumber'
-import { DataTable } from 'primereact/datatable'
-import { Column } from 'primereact/column'
-import { Dropdown } from 'primereact/dropdown'
-import { Card } from 'primereact/card'
+import  {  useState } from 'react'
 import { Tag } from 'primereact/tag'
-import { Button } from 'primereact/button'
 import { useDispatch, useSelector } from 'react-redux'
-import { Divider } from 'primereact/divider'
 import { addTask, updateTask, deleteTask } from '../store/ProjectsSlice'
 import { useLocation } from 'react-router-dom'
 import ShowProjectCard from './ShowProjectCard'
-import { getSeverity, changeStatuses } from '../utils/constants'
+import { getSeverity } from '../utils/constants'
 
 const ProjectSingle = () => {
     const location = useLocation()
@@ -45,7 +38,6 @@ const ProjectSingle = () => {
     const allowEdit = (rowData) => {
         return rowData.name !== 'Blue Band';
     }
-
 
     const deleted = (rowData) => {
         dispatch(deleteTask({ idproj: idOfProjectSignle, idtask: rowData.Tid }))

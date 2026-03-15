@@ -1,5 +1,6 @@
-   import { Card } from 'primereact/card';
-   import { Button } from 'primereact/button';
+   import { Card } from 'primereact/card'
+   import { Button } from 'primereact/button'
+
    const GridItem = ({project, index,goToProject,deleteFunc,updateFunc}) => {
         return (
             <div className="col-12 sm:col-6 lg:col-4 p-2" key={project.id}>

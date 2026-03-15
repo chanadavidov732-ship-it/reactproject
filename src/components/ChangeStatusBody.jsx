@@ -12,8 +12,12 @@ const ChangeStatusBody = ({ rowData ,idOfProjectSignle}) => {
 
     return (
         <div className="card flex justify-content-center">
-            <Dropdown value={rowData.Tstatus} onChange={(e) => changeStatus({ Tid: rowData.Tid, Value: e.value.name })} options={changeStatuses} optionLabel="name"
-                placeholder="Change status" className="w-full md:w-14rem" />
+            <Dropdown value={rowData.Tstatus} 
+            onChange={(e) => changeStatus({ Tid: rowData.Tid, Value: e.value.name })} 
+            options={changeStatuses} optionLabel="name"
+            placeholder="Change status" className="w-full md:w-14rem"
+            style={{ width: '100%', maxWidth: '110px', fontSize: '13px' }}
+            />
         </div>
     )
 }

@@ -1,19 +1,17 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { log } from '../store/LoginSlice'
-import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-
-import React, { useState } from "react";
-import { InputText } from "primereact/inputtext";
-import { FloatLabel } from "primereact/floatlabel";
-
+import { Dialog } from "primereact/dialog"
+import { useNavigate } from 'react-router-dom'
+import { Button } from "primereact/button"
+import React from 'react';
+import LoginDialog from './LoginDialog'
+import '../App.css'
 const Home = () => {
-  const dispatch = useDispatch()
+
   const navigate = useNavigate()
   const isLogged = useSelector(state => state.LoginSlice.isLogged)
-  const { register, handleSubmit, formState: { errors } } = useForm()
-  const [value, setValue] = useState('');
 
   useEffect(() => {
     if (isLogged) {
@@ -21,37 +19,34 @@ const Home = () => {
     }
   }, [isLogged, navigate])
 
-  const onSubmit = (data) => {
-    dispatch(log({ name: data.userName, mail: data.userMail }))
+  const [visible, setVisible] = useState(false)
+
+  const goToLogin = () => {
+    setVisible(true)
   }
 
   return (
-    <div>
-      <h1> Welcome to your projects</h1>
-      <h3>To view all projects please log in</h3>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input
-            placeholder="name"
-            {...register("userName", { required: "חובה להזין שם" })}
-          />
-          {errors.userName && <span style={{ color: 'red' }}>{errors.userName.message}</span>}
-        </div>
-        <div>
-          <input
-            placeholder="mail"
-            {...register("userMail", {
-              required: "חובה להזין מייל",
-              pattern: { value: /^\S+@\S+\.\S+$/, message: "מייל לא תקין" }
-            })}
-          />
-          {errors.userMail && <span style={{ color: 'red' }}>{errors.userMail.message}</span>}
-        </div>
-        <button type="submit">login</button>
-      </form>
+    <div className="home-content">
+      <div className="glass-background"></div>
+
+      <div className="top-right-button">
+        <Button onClick={goToLogin} label="Login" icon="pi pi-sign-in" className="p-button-rounded" />
+      </div>
+
+      <div className="content-container">
+        <h1 style={{ fontSize: '4rem', color: '#2c3e50' }}>Welcome to your projects</h1>
+        <h3 style={{ color: '#7f8c8d' }}>To view all projects please log in</h3>
+      </div>
+
+      <LoginDialog visible={visible} setVisible={setVisible} />
     </div>
+
   )
+
+
+
+
 }
 
 export default Home
