@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { useState } from 'react'
 const initialState = {
   list: [
     {
@@ -16,7 +17,7 @@ const initialState = {
           TdueDate: "2024-06-01"
         },
         {
-          Tid: "t1",
+          Tid: "t2",
           Ttitle: "משימה שניה",
           Tdescription: "פירוט ארוך",
           Tstatus: "toDo",
@@ -41,8 +42,7 @@ const ProjectsSlice = createSlice({
 
     addTask: (state, action) => {
       const new1 = {
-        //another id somehow
-        Tid: '9999', Ttitle: '', Tdescription: '', Tstatus: action.payload.status, Tpriority: '', TdueDate: ''
+        Tid:action.payload.Tid , Ttitle: '', Tdescription: '', Tstatus: action.payload.status, Tpriority: '', TdueDate: ''
       }
       const projfind = state.list.find(p => p.id === action.payload.idproj)
       projfind.tasks.push(new1)
@@ -60,7 +60,7 @@ const ProjectsSlice = createSlice({
     updateStatus: (state, action) => {
       const projfind = state.list.find(p => p.id === action.payload.idproj)
       const taskfind = projfind.tasks.find(t => t.Tid === action.payload.Tid)
-      taskfind.Tstatus=action.payload.Tstatus
+      taskfind.Tstatus = action.payload.Tstatus
     },
 
     update: (state, action) => {
@@ -92,6 +92,6 @@ const ProjectsSlice = createSlice({
   }
 })
 
-export const { add, deleteP, update, addTask,updateTask,deleteTask ,updateStatus} = ProjectsSlice.actions
+export const { add, deleteP, update, addTask, updateTask, deleteTask, updateStatus } = ProjectsSlice.actions
 
 export default ProjectsSlice.reducer
