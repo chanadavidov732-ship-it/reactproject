@@ -3,23 +3,23 @@ import { useState } from 'react'
 const initialState = {
   list: [
     {
-      id: "1",
-      name: "פרויקט לדוגמה",
-      description: " המושלם שלי שאין כמונו בריאקט",
+      id: '1',
+      name: 'Example project',
+      description:'the best project on react!!',
       createdAt: "2024-05-20",
       tasks: [
         {
           Tid: "t1",
-          Ttitle: "משימה ראשונה",
-          Tdescription: "פירוט",
+          Ttitle: 'First task',
+          Tdescription: "the info",
           Tstatus: "inProgress", // todo, inProgress, done
           Tpriority: "Medium",
           TdueDate: "2024-06-01"
         },
         {
           Tid: "t2",
-          Ttitle: "משימה שניה",
-          Tdescription: "פירוט ארוך",
+          Ttitle: 'Second task',
+          Tdescription: "the info",
           Tstatus: "toDo",
           Tpriority: "Medium",
           TdueDate: "2024-06-01"

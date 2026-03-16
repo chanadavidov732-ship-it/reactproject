@@ -2,11 +2,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom'
 import { deleteP } from '../store/ProjectsSlice'
-import ListItem from './listItem';
+import ListItem from './ListItem';
 import GridtItem from './GridItem'
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
-import { useForm } from 'react-hook-form';
 import UpdateProject from './UpdateProject';
 import NewProject from './NewProject';
 
@@ -34,8 +33,6 @@ const Projects = () => {
     const addProjFunc = () => {
         setIfAddProject(true)
         setVisible2(true);
-
-        //navigate('/NewProject')
     }
     const goToProject = (id) => {
         navigate('/ProjectSingle', { state: id })

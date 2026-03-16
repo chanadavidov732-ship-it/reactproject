@@ -39,7 +39,7 @@ const LoginDialog = ({ visible, setVisible }) => {
                     {errors.loginMail && <span style={{ color: 'red' }}>{errors.loginMail.message}</span>}
                 </div>
 
-                <Button type="submit" label="Login" icon="pi-lock-open" className="mt-2" />
+                <Button type="submit" label="Login" icon="" className="mt-2"style={{ color: '#06b6d4' }} />
             </form>
         </Dialog>
     )

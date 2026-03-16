@@ -1,6 +1,5 @@
 import { classNames } from 'primereact/utils';
 import { Button } from 'primereact/button';
-import { ColorPicker } from 'primereact/colorpicker';
 const ListItem = ({project, index,deleteFunc,updateFunc,goToProject}) => {
         return (
             <div className="col-12 p-3" key={project.id}>
