@@ -46,7 +46,7 @@ const Projects = () => {
 
     }
     const listTemplate = (projects, layout) => {
-        return <div className="grid grid-nogutter">{projects.map((project, index) => itemTemplate(project, layout, index))}</div>
+        return <div className="grid grid-nogutter" >{projects.map((project, index) => itemTemplate(project, layout, index))}</div>
     }
     const header = () => {
         return (
@@ -58,6 +58,7 @@ const Projects = () => {
     }
     return (
         <div className="card p-4">
+            
             <DataView value={projects} listTemplate={listTemplate} layout={layout} header={header()} rows={6} />
             {selectedProject && (
                 <UpdateProject id={selectedProject} visible={visible} setVisible={setVisible} />

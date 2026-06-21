@@ -6,15 +6,15 @@ const initialState = {
       id: '1',
       name: 'Example project',
       description:'the best project on react!!',
-      createdAt: "2024-05-20",
+      createdAt: '2024-05-20',
       tasks: [
         {
-          Tid: "t1",
+          Tid: 't1',
           Ttitle: 'First task',
-          Tdescription: "the info",
-          Tstatus: "inProgress", // todo, inProgress, done
-          Tpriority: "Medium",
-          TdueDate: "2024-06-01"
+          Tdescription: 'the info',
+          Tstatus: 'inProgress', // todo, inProgress, done
+          Tpriority: 'Medium',
+          TdueDate: '2024-06-01'
         },
         {
           Tid: "t2",
